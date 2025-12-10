@@ -6,7 +6,7 @@ const Profile = () => {
       tabIndex="1"
       className="focus-within:ring-2 flex focus-within:ring-black/20 cursor-pointer items-center gap-2 ml-9 lg:ml-0 select-none hover:bg-black/5 rounded-md duration-150"
     >
-      <div className="size-11">
+      <div className="size-13">
         <img
           className="size-full rounded-full object-cover"
           src={AVATAR_URL}
@@ -14,8 +14,8 @@ const Profile = () => {
         />
       </div>
       <div>
-        <p className="text-sm font-semibold">امیر خراسانی</p>
-        <p className="text-xs text-gray-500">برنامه نویس فرانت</p>
+        <p className="text-lg font-semibold">امیر خراسانی</p>
+        <p className="text-sm text-cyan-500">برنامه نویس فرانت</p>
       </div>
     </div>
   );

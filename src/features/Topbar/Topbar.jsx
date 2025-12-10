@@ -23,7 +23,7 @@ const Topbar = ({ setSidebarOpen }) => {
         <button
           onClick={() => setSidebarOpen(true)}
           className="inline-flex p-2
-          rounded-full dark:text-red-400 text-red-500 dark:bg-neutral-600 border-2 border-red-200 dark:border-neutral-600 bg-red-200
+          rounded-full dark:text-cyan-400 text-cyan-700 dark:bg-cyan-900 border-2 border-cyan-200 dark:border-cyan-900 bg-cyan-200
             items-center justify-center cursor-pointer hover:text-white transition"
         >
           <HiOutlineMenu className="h-6.5 w-6.5"/>
