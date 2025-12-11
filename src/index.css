@@ -97,3 +97,23 @@ body {
         border-radius: 1px;
         color:rgba(125, 125, 125, 0.5)
  }
+
+.success {
+  background-color: rgba(22, 255, 22, 0.224);
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 0;
+  border-radius: 8px;
+}
+
+.danger {
+  background-color: rgba(255, 22, 22, 0.315);
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 0;
+  border-radius: 8px;
+}

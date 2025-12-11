@@ -23,7 +23,7 @@ const DashboardLayout = () => {
       {/* Main content */}
       <section className="flex-1 flex flex-col relative z-10">
         <Topbar setSidebarOpen={setSidebarOpen} />
-        <div className="lg:pt-5 pt-25 px-4 sm:px-6 lg:px-8 flex-1 overflow-auto">
+        <div className="lg:pt-5 pt-25 px-6 sm:px-6 lg:px-1 flex-1 overflow-auto">
           <Outlet />
         </div>
       </section>

@@ -40,7 +40,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       )}
 
       {/* Desktop Sidebar (Always fixed, right side) */}
-      <aside className="hidden ml-5 lg:flex lg:flex-col lg:w-72 lg:h-screen lg:sticky lg:top-0 lg:right-0 bg-neutral-50 dark:bg-neutral-800 rounded-2xl backdrop-blur-2xl p-6">
+      <aside className="hidden lg:border-y-5 dark:border-neutral-900 border-neutral-200/70 ml-5 lg:flex lg:flex-col lg:w-72 lg:h-screen lg:sticky lg:top-0 lg:right-0 bg-neutral-50 dark:bg-neutral-800 rounded-3xl backdrop-blur-2xl p-6">
         <SidebarHeader />
         <div className="mt-6 flex-1 overflow-y-auto">
           <Menus menus={menus} />

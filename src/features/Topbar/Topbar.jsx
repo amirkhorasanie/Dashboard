@@ -9,8 +9,8 @@ const Topbar = ({ setSidebarOpen }) => {
   return (
     <div
       className="
-        fixed top-0 lg:rounded-2xl left-0 right-0 w-full
-        lg:static
+        fixed top-0 lg:rounded-2xl left-0 right-0 w-full dark:shadow-xl shadow-sm
+        lg:sticky lg:border-t-5 dark:border-neutral-900 border-neutral-200/70
         flex z-50 items-center justify-between
         h-20 lg:h-22 px-4 sm:px-6 lg:px-8
         dark:bg-neutral-800
