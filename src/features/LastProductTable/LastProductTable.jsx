@@ -1,62 +1,101 @@
-import React, { Children } from 'react'
-import Table from '../../components/common/Table/Table'
-import { Link } from 'react-router'
-import { MdOpenInNew } from 'react-icons/md';
-import TableHead from "./../../components/common/Table/Elements/TableHead"
-import TableHeadCell from "./../../components/common/Table/Elements/TableHeadCell"
-import {products, productsTableHeadRow} from '../../data/products';
-import TableBody from "./../../components/common/Table/Elements/TableBody"
-import TableRow from "./../../components/common/Table/Elements/TableRow"
-import TableCell from "./../../components/common/Table/Elements/TableCell"
-import clsx from 'clsx';
-
+import { Link } from "react-router";
+import Table from "./../../components/common/Table/Table";
+import TableHead from "./../../components/common/Table/elements/TableHead";
+import TableHeadCell from "./../../components/common/Table/elements/TableHeadCell";
+import TableBody from "./../../components/common/Table/elements/TableBody";
+import TableRow from "./../../components/common/Table/elements/TableRow";
+import { MdOpenInNew } from "react-icons/md";
+import { products, productsTableHeadRow } from "../../data/products";
+import TableCell from "../../components/common/Table/elements/TableCell";
+import clsx from "clsx";
+import RemoveProductIcon from "./components/RemoveProductIcon";
+import ChangeVisibilityIcon from "./components/ChangeVisibilityIcon";
+import EditProducttIcon from "./Components/EditProductIcon";
+import { useState } from "react";
 
 const LastProductTable = () => {
+  const [lastProducts, setLastProducts] = useState([...products]);
+
   const Buttons = () => {
     return (
-    <Link
-      to="/products"
-      className='flex-center gap-1 underline hover:text-blue-500'>
-      <span>صفحه محصولات</span>
-      <MdOpenInNew />
-    </Link>
+      <Link
+        to={"/products"}
+        className="underline hover:text-blue-400 text-blue-500 flex-center gap-1"
+      >
+        <span>صفحه محصولات</span>
+        <MdOpenInNew />
+      </Link>
     );
   };
-  
+
+  const removeProduct = (id) => {
+    const newProducts = lastProducts.filter((product) => product.id !== id);
+    setLastProducts(newProducts);
+  };
+
+  const changeProductVisibility = (id) => {
+    const newProducts = lastProducts.map((product) => {
+      return product.id === id
+        ? { ...product, isPublished: !product.isPublished }
+        : { ...product };
+    });
+
+    setLastProducts(newProducts);
+  };
+
   return (
     <div>
-      <Table header={{title: "لیست محصولات", Buttons: Buttons}}>
+      <Table
+        header={{ title: "لیست محصولات", Buttons: Buttons }}
+        pagination={{
+          items: products,
+          setItems: setLastProducts,
+          itemsPerPage: 6,
+        }}
+      >
         <TableHead>
           {productsTableHeadRow.map((row) => (
             <TableHeadCell key={row}>{row}</TableHeadCell>
           ))}
         </TableHead>
+
         <TableBody>
-          {products.map((product) => 
-          <TableRow key={product.id}>
-            <TableCell>{product.id.slice(0, 10)}...</TableCell>
-            <TableCell>{product.title}</TableCell>
-            <TableCell>
-              <p className={clsx(
-                  product.isPublished ? "success" : "danger",
-                  "badge"
-                )}
-              >
-              {product.isPublished ? "عمومی" : "خصوصی"}
-              </p>
-            </TableCell>
-            <TableCell>
-              <span>{product.price.toLocaleString("fa-IR")}
-               {""} تومان
-              </span>
-            </TableCell>
-            <TableCell>عملیات</TableCell>
-          </TableRow>
-          )}
+          {lastProducts.map((product) => (
+            <TableRow key={product.id}>
+              <TableCell>{product.id.slice(0, 10)}...</TableCell>
+              <TableCell>{product.title}</TableCell>
+              <TableCell>
+                <p
+                  className={clsx(
+                    product.isPublished ? "success-badge" : "danger-badge",
+                    "badge"
+                  )}
+                >
+                  {product.isPublished ? "عمومی" : "خصوصی"}
+                </p>
+              </TableCell>
+              <TableCell>
+                <span>{product.price.toLocaleString("fa-IR")}</span> تومان
+              </TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <RemoveProductIcon
+                    product={product}
+                    handler={removeProduct}
+                  />
+                  <ChangeVisibilityIcon
+                    product={product}
+                    handler={changeProductVisibility}
+                  />
+                  <EditProducttIcon product={product} />
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>
-  )
-}
+  );
+};
 
-export default LastProductTable
+export default LastProductTable;

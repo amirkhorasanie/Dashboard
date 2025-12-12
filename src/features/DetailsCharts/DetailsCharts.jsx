@@ -10,7 +10,10 @@ const DetailsCharts = ({ isAnimationActive = true }) => {
   });
 
   return (
-    <div className="w-full flex justify-center items-center text-center mt-5 bg-white dark:bg-neutral-800 pb-7 pt-7 pr-7 rounded-3xl">
+    <>
+    <div className='mt-5 bg-white dark:bg-neutral-800 pb-7 pt-7 pr-7 rounded-3xl'>
+    <p className='text-xl font-semibold pb-5'>آمار داشبورد</p>
+    <div className="w-full flex justify-center items-center text-center ">
       <ResponsiveContainer width="100%" height={440}>
         <AreaChart
           data={data}
@@ -63,6 +66,8 @@ const DetailsCharts = ({ isAnimationActive = true }) => {
         </AreaChart>
       </ResponsiveContainer>
     </div>
+    </div>
+    </>
   );
 };
 

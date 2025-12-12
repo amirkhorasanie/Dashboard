@@ -9,7 +9,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     <>
       {/* Mobile Drawer (Right side) */}
       <div
-        className={`fixed inset-y-0 right-0 w-72 bg-white dark:bg-neutral-800 p-6 z-30 transform transition-transform duration-700 lg:hidden ${
+        className={`fixed inset-y-0 right-0 w-72 bg-white dark:bg-neutral-800 p-6 z-5 transform transition-transform duration-700 lg:hidden ${
           sidebarOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
