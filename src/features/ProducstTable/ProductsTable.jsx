@@ -1,9 +1,9 @@
 import { Link } from "react-router";
-import Table from "./../../components/common/Table/Table";
-import TableHead from "./../../components/common/Table/elements/TableHead";
-import TableHeadCell from "./../../components/common/Table/elements/TableHeadCell";
-import TableBody from "./../../components/common/Table/elements/TableBody";
-import TableRow from "./../../components/common/Table/elements/TableRow";
+import Table from "../../components/common/Table/Table";
+import TableHead from "../../components/common/Table/elements/TableHead";
+import TableHeadCell from "../../components/common/Table/elements/TableHeadCell";
+import TableBody from "../../components/common/Table/elements/TableBody";
+import TableRow from "../../components/common/Table/elements/TableRow";
 import { MdOpenInNew } from "react-icons/md";
 import { products, productsTableHeadRow } from "../../data/products";
 import TableCell from "../../components/common/Table/elements/TableCell";

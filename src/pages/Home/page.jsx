@@ -4,7 +4,8 @@ import { useNavigate } from "react-router";
 import Summaries from "../../features/Summaries/Summaries";
 import DetailsCharts from "../../features/DetailsCharts/DetailsCharts";
 import Table from "../../components/common/Table/Table";
-import LastProductTable from "../../features/LastProductTable/LastProductTable";
+import ProductsTable from "../../features/ProducstTable/ProductsTable";
+import QuickOverview from "../../features/QuickOverview/QuickOverview";
 
 const Home = () => {
   
@@ -36,9 +37,9 @@ const Home = () => {
     <p>لطفا برای نمایش لیست محصولات با لپ تاپ وارد شوید</p>
   </div>
   <div className="hidden sm:block">
-    <LastProductTable />
+    <ProductsTable />
+    <QuickOverview />
   </div>
-  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
   </>
   )
 };

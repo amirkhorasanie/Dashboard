@@ -40,11 +40,11 @@ body {
 }
 
 .not-active-tab {
-  @apply text-gray-400 hover:text-black hover:bg-black/5;
+  @apply text-neutral-600 dark:text-neutral-400 hover:text-black hover:bg-black/20;
 }
 
 .pagination {
-  @apply flex border-t-2 dark:text-neutral-700 text-neutral-300 justify-center p-4 items-center gap-1 *:cursor-pointer;
+  @apply flex border-t-2 dark:border-neutral-700 dark:text-neutral-500 text-neutral-300 justify-center p-4 items-center gap-1 *:cursor-pointer;
 }
 
 .pagination-prev-button {
@@ -138,6 +138,45 @@ body {
 .danger {
   background-color: rgba(255, 22, 22, 0.232);
   color:  rgb(222, 46, 46);
+  padding-left: 11px;
+  padding-right: 11px;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 0;
+  border-radius: 8px;
+}
+
+.manager {
+    background-color: rgba(22, 228, 255, 0.232);
+  color:  rgb(46, 199, 222);
+  padding-left: 11px;
+  padding-right: 11px;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 0;
+  border-radius: 8px;
+}
+
+.admin {
+      background-color: rgba(255, 170, 22, 0.232);
+  color:  rgb(222, 146, 46);
+  padding-left: 11px;
+  padding-right: 11px;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 0;
+  border-radius: 8px;
+}
+
+.user {
+  background-color: rgba(22, 255, 72, 0.232);
+  color:  rgb(46, 222, 96);
   padding-left: 11px;
   padding-right: 11px;
   font-size: 12.5px;

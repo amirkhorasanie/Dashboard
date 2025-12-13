@@ -9,7 +9,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     <>
       {/* Mobile Drawer (Right side) */}
       <div
-        className={`fixed inset-y-0 right-0 w-72 bg-white dark:bg-neutral-800 p-6 z-5 transform transition-transform duration-700 lg:hidden ${
+        className={`fixed inset-y-0 right-0 w-72 bg-white dark:bg-neutral-800 p-6 z-100 transform transition-transform duration-700 lg:hidden ${
           sidebarOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -34,7 +34,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       {/* Mobile Overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/30 z-20 lg:hidden"
+          className="fixed inset-0 bg-black/30 z-50 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}

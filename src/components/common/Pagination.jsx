@@ -1,43 +1,35 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
-const Pagination = ({ items, setItems, itemsPerPage }) => {
+const Pagination = ({ items = [], setItems, itemsPerPage = 5 }) => {
   const [currentPage, setCurrentPage] = useState(1);
+
+  // ✅ guard
+  if (!Array.isArray(items) || items.length === 0) {
+    return null;
+  }
+
   const pagesCount = Math.ceil(items.length / itemsPerPage);
 
   useEffect(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage; // 4
-    const endIndex = startIndex + itemsPerPage; // 8
-    const paginatedItems = items.slice(startIndex, endIndex);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
 
-    setItems(paginatedItems);
-  }, [currentPage]);
+    const paginatedItems = [...items]
+      .reverse()
+      .slice(startIndex, endIndex);
 
-  const changePageHandler = (pageNumber) => setCurrentPage(pageNumber);
+    setItems?.(paginatedItems);
+  }, [currentPage, items, itemsPerPage, setItems]);
 
-  const renderPageNumber = () => {
-    const pageNumbers = [];
-
-    for (let i = 1; i <= pagesCount; i++) {
-      pageNumbers.push(
-        <button
-          key={i}
-          onClick={() => changePageHandler(i)}
-          className={clsx("pagination-button", {
-            "active-tab": currentPage === i,
-            "non-active-tab": currentPage !== i,
-          })}
-        >
-          {i}
-        </button>
-      );
-    }
-
-    return pageNumbers;
-  };
+  const changePageHandler = (pageNumber) =>
+    setCurrentPage(pageNumber);
 
   return (
-    <div className="pagination rounded-b-3xl dark:bg-neutral-800/50 bg-zinc-50/40" dir="rtl">
+    <div
+      className="pagination rounded-b-3xl dark:bg-neutral-800/50 bg-zinc-50/40"
+      dir="rtl"
+    >
       <button
         disabled={currentPage === 1}
         onClick={() => changePageHandler(currentPage - 1)}
@@ -48,12 +40,23 @@ const Pagination = ({ items, setItems, itemsPerPage }) => {
         قبلی
       </button>
 
-      {renderPageNumber()}
+      {Array.from({ length: pagesCount }).map((_, i) => (
+        <button
+          key={i}
+          onClick={() => changePageHandler(i + 1)}
+          className={clsx("pagination-button", {
+            "active-tab": currentPage === i + 1,
+            "non-active-tab": currentPage !== i + 1,
+          })}
+        >
+          {i + 1}
+        </button>
+      ))}
 
       <button
         disabled={currentPage === pagesCount}
         onClick={() => changePageHandler(currentPage + 1)}
-        className={clsx("pagination-next-button", {
+        className={clsx({
           "pages-ended active-tab": currentPage === pagesCount,
         })}
       >

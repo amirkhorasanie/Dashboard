@@ -6,15 +6,25 @@ export const productsTableHeadRow = [
   "",
 ];
 
+export const productsAllTableHeadRow = [
+  "شناسه",
+  "عنوان محصول",
+  "تصویر",
+  "وضعیت نمایش",
+  "قیمت",
+  "موجودی",
+  "",
+];
+
 const STATIC_DESCRIPTION =
   "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و";
 
-const STATIC_PRODUCT_IMG = "/images/product-img.png";
+const STATIC_PRODUCT_IMG = "/images/17pro.png";
 
 export const products = [
   {
     id: crypto.randomUUID(),
-    title: "Xiaomi 17 Pro Max",
+    title: "آیفون 17 پرومکس نارنجی",
     description: STATIC_DESCRIPTION,
     img: STATIC_PRODUCT_IMG,
     isPublished: true,

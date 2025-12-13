@@ -10,7 +10,7 @@ const Summaries = () => {
   });
 
   return (
-    <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:grid-cols-4 gap-5 mt-6">
+    <div className="grid *:hover:scale-103 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:grid-cols-4 gap-5 mt-6">
       {summaries.map((summary) => (
         <SummaryCard key={summary.id} {...summary} />
       ))}
