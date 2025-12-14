@@ -1,6 +1,6 @@
 import { CiGrid41, CiViewTable } from "react-icons/ci";
 import SectionTitle from "./../../components/common/SectionTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { products } from "./../../data/products";
 import ProductTableView from "../../features/ProductsView/ProductsTableView";
 import ProductsGridView from "./../../features/ProductsView/ProductsGridView";
@@ -21,7 +21,7 @@ const Products = () => {
     isPublished: false,
     entity: "",
   })
-  
+
   const toggleLayout = () => {
     const layout = layoutType === "GRID" ? "TABLE" : "GRID";
     setLayoutType(layout);
