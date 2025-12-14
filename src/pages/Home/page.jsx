@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import Summaries from "../../features/Summaries/Summaries";
 import DetailsCharts from "../../features/DetailsCharts/DetailsCharts";
 import Table from "../../components/common/Table/Table";
-import ProductsTable from "../../features/ProducstTable/ProductsTable";
+import ProductsTable from "../../features/ProductsTable/ProductsTable";
 import QuickOverview from "../../features/QuickOverview/QuickOverview";
 
 const Home = () => {

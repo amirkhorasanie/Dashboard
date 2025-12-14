@@ -1,6 +1,6 @@
 import React from 'react'
-import Filter from './Filter';
-import Search from './Search';
+import Filter from './elements/Filter';
+import Search from './elements/Search';
 
 const TableHeader = ({header}) => {
   

@@ -1,5 +1,5 @@
-import TableHeader from "./elements/TableHeader";
 import Pagination from "../../common/Pagination";
+import TableHeader from "./TableHeader";
 
 const Table = ({
   header = { title: "لیست آیتم‌ها", Buttons: undefined },

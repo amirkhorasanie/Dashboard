@@ -1,31 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import Table from "../../components/common/Table/Table";
-import users from "../../data/users";
 import TableHead from "../../components/common/Table/elements/TableHead";
 import TableHeadCell from "../../components/common/Table/elements/TableHeadCell";
 import TableBody from "../../components/common/Table/elements/TableBody";
 import TableRow from "../../components/common/Table/elements/TableRow";
 import TableCell from "../../components/common/Table/elements/TableCell";
 import clsx from "clsx";
-import RemoveProductIcon from "../ProducstTable/components/RemoveProductIcon";
+import RemoveProductIcon from "../ProductsTable/components/RemoveProductIcon";
 
-const UsersView = () => {
-  
-  const [allUsers, setAllUsers] = useState([...users])
-  
-  const removeProduct = (id) => {
-    const newUsers = allUsers.filter((user) => user.id !== id);
-    setAllUsers(newUsers);
+const UsersView = ({ users, setUsers, paginatedProducts}) => {
+
+  const removeUser = (id) => {
+    const newUsers = users.filter((user) => user.id !== id);
+    setUsers(newUsers);
   };
 
+  // دیکشنری برای نمایش متن فارسی نقش
+  const roleLabels = {
+    user: "کاربر",
+    manager: "مدیر",
+    admin: "پشتیبانی"
+  };
 
   return (
-    <Table header={{ title: "لیست کاربران" }}
-            pagination={{
-              items: users,
-              setItems: setAllUsers,
-              itemsPerPage: 7,
-            }}
+    <Table header={{ title:"مدیریت کاربران" }}
+    
+    pagination={{
+        itemsPerPage: 6,
+        items: users,
+        setItems: setUsers,
+      }}
     >
       <TableHead>
         <TableHeadCell>#شناسه</TableHeadCell>
@@ -38,48 +42,30 @@ const UsersView = () => {
       </TableHead>
 
       <TableBody>
-        {allUsers.map((user) => (
-          <TableRow key={user.id}>
-            <TableCell>{user.id.slice(0, 10)}...</TableCell>
-            <TableCell>{user.fullName}</TableCell>
-            <TableCell>{user.userName}</TableCell>
-            <TableCell>{user.email}</TableCell>
-            <TableCell>
-              <p className={clsx(
-                  
-                )}
-              >
-                {user.phoneNumber}
-              </p>
-            </TableCell>
-            <TableCell>
-              <p
-                className={clsx(
-                  user.roles === "مدیر"
-                    ? "manager"
-                    : user.roles === "پشتیبانی"
-                    ? "admin"
-                    : "user",
-                  "badge"
-                )}
-              >
-                {user.roles === "مدیر"
-                  ? "مدیر"
-                  : user.roles === "پشتیبانی"
-                  ? "پشتیبانی"
-                  : "کاربر"}
-              </p>
-            </TableCell>
-            <TableCell>
-              <div className="flex items-center">
-                <RemoveProductIcon 
-                user={user}
-                handler={removeProduct}
-                />
-              </div>
-            </TableCell>
-          </TableRow>
-        ))}
+        {paginatedProducts.map((user) => {
+          // تبدیل نقش‌های قدیمی فارسی به انگلیسی برای نمایش درست
+          let role = user.roles;
+          if (role === "مدیر") role = "manager";
+          if (role === "پشتیبانی") role = "admin";
+
+          return (
+            <TableRow key={user.id}>
+              <TableCell>{user.id.slice(0, 10)}...</TableCell>
+              <TableCell>{user.fullName}</TableCell>
+              <TableCell>{user.userName}</TableCell>
+              <TableCell>{user.email}</TableCell>
+              <TableCell>{user.phoneNumber}</TableCell>
+              <TableCell>
+                <p className={clsx(role, "badge")}>
+                  {roleLabels[role] || "کاربر"}
+                </p>
+              </TableCell>
+              <TableCell>
+                <RemoveProductIcon user={user} handler={removeUser} />
+              </TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

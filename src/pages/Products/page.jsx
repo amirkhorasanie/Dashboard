@@ -5,7 +5,8 @@ import { products } from "./../../data/products";
 import ProductTableView from "../../features/ProductsView/ProductsTableView";
 import ProductsGridView from "./../../features/ProductsView/ProductsGridView";
 import Modal from "./../../components/common/Modal"
-import AddProductFields from "../../features/ProducstTable/Components/AddProductFields";
+import AddProductFields from "../../features/ProductsTable/Components/AddProductFields";
+import { IoMdAdd } from "react-icons/io";
 
 const Products = () => {
   const [layoutType, setLayoutType] = useState("GRID"); // or GRID
@@ -52,14 +53,14 @@ const Products = () => {
       <Modal 
       title="ایجاد محصول جدید"
       Trigger={
-          <button className="dark:bg-cyan-900 transition-all hover:rounded-sm dark:text-cyan-400  text-cyan-900 bg-cyan-400 font-semibold px-4 py-2 rounded-2xl">ایجاد محصول</button>
+          <button className="dark:bg-cyan-900 flex gap-1 transition-all hover:rounded-sm dark:text-cyan-400  text-cyan-900 bg-cyan-400 font-semibold px-4 py-2 rounded-2xl">
+            <IoMdAdd className="text-2xl"/> ایجاد محصول
+          </button>
         }
         onSubmit={createNewProduct}
       >
         <AddProductFields newProduct={newProduct} onChange={setNewProduct}/>
       </Modal>
-
-      {/**/}
     </>
   );
 
